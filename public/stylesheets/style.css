@@ -1,0 +1,119 @@
+body { 
+    padding: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.table {
+    width: auto;
+    height: 100px;
+    background-color: #409840;
+}
+
+.container {
+    width: 800px;
+}
+
+.section {
+    width: 100px;
+    float: left;
+}
+
+.point {
+    width: 700px;
+    overflow-x: scroll;
+    float: left;
+}
+
+.line {
+    width: 100px;
+    float: left;
+}
+
+.line.me {
+    background-color: #efefef;
+}
+
+.cell {
+    color: #9a3612;
+    height: 24px;
+    line-height: 24px;
+    border-bottom: 1px solid #9a3612;
+    border-right: 1px solid #9a3612;
+    text-align: center;
+}
+
+.cell.slot {
+    color: #eeaaaa;
+    cursor: pointer;
+}
+
+.cell.done {
+    background-color: #dedede;
+}
+
+.cell.total {
+    background-color: #e2e2ff;
+    border-right: 1px solid #ccccff;
+    font-weight: bold;
+}
+
+.cell:first-child {
+    font-weight: bold;
+    color: #e3e3e3;
+    background-color: #555555;
+    border-right: 1px solid #555555;
+}
+
+.cell:last-child {
+    font-weight: bold;
+    color: #9999dd;
+    background-color: #333333;
+    border-right: 1px solid #333333;
+}
+
+.section > .cell {
+    border-left: 1px solid #ab4723;
+}
+
+
+
+
+
+.dice {
+    height: 48px;
+    width: 50px;
+    margin: 5px;
+    float: left;
+    background-image: url(../images/dice.png);
+    background-size: 300px;
+    cursor: pointer;
+}
+
+.dice.hold {
+    margin: 3px;
+    border: 2px solid #ff0000;
+    border-radius: 18px;
+}
+
+.dice.ace { background-position: 0 0; }
+.dice.two { background-position: -50px 0; }
+.dice.three { background-position: -100px 0; }
+.dice.four { background-position: -150px 0; }
+.dice.five { background-position: -200px 0; }
+.dice.six { background-position: -250px 0; }
+
+.btn {
+    float: right;
+    margin: 5px;
+    width: 150px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background-color: #ab4723;
+    border-radius: 5px;
+    cursor: pointer;
+}

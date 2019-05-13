@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
+    <script src="./javascripts/dice.js"></script>
+    <script src="./javascripts/app.js"></script>
+</head>
+<body ng-app="YahtzeeApp">
+    <div class="container" ng-controller="MainCtrl">
+        <div class="header">
+        </div>
+        <div class="game">
+            <div class="table">
+                <dice></dice>
+                <dice></dice>
+                <dice></dice>
+                <dice></dice>
+                <dice></dice>
+                <div class="btn" ng-if="canRolling()" ng-click="roll()">ROLL</div>
+            </div>
+            <div class="board">
+                <div class="section">
+                    <div class="cell">SECTION</div>
+                    <div class="cell" title="{{explanations[0]}}">Aces</div>
+                    <div class="cell" title="{{explanations[1]}}">Twos</div>
+                    <div class="cell" title="{{explanations[2]}}">Threes</div>
+                    <div class="cell" title="{{explanations[3]}}">Fours</div>
+                    <div class="cell" title="{{explanations[4]}}">Fives</div>
+                    <div class="cell" title="{{explanations[5]}}">Sixes</div>
+                    <div class="cell total">Upper Total</div>
+                    <div class="cell total" title="{{explanations[6]}}">Upper BONUS</div>
+                    <div class="cell" title="{{explanations[7]}}">3 of a kind</div>
+                    <div class="cell" title="{{explanations[8]}}">4 of a kind</div>
+                    <div class="cell" title="{{explanations[9]}}">Full House</div>
+                    <div class="cell" title="{{explanations[10]}}">Sm. Straight</div>
+                    <div class="cell" title="{{explanations[11]}}">Lg. Straight</div>
+                    <div class="cell" title="{{explanations[12]}}">YAHTZEE</div>
+                    <div class="cell" title="{{explanations[13]}}">Chance</div>
+                    <div class="cell total">Lower Total</div>
+                    <div class="cell total">TOTAL</div>
+                </div>
+                <div class="point">
+                    <div class="body" style="width:{{models.players.length * 100 + 100}}px;">
+                        <div ng-if="models.me" class="line me">
+                            <div class="cell">Player {{(me = models.me).id}}</div>
+                            <div class="cell" ng-repeat="index in [0,1,2,3,4,5]" ng-class="getClass(index)" ng-click="done(index)">{{getPoint(index)}}</div>
+                            <div class="cell total">{{upper = me.game[0] + me.game[1] + me.game[2] + me.game[3] + me.game[4] + me.game[5]}}</div>
+                            <div class="cell total">{{(bonus = upper > 62 ? 35 : 0) ? bonus : null}}</div>
+                            <div class="cell" ng-repeat="index in [6,7,8,9,10,11,12]" ng-class="getClass(index)" ng-click="done(index)">{{getPoint(index)}}</div>
+                            <div class="cell total">{{lower = me.game[6] + me.game[7] + me.game[8] + me.game[9] + me.game[10] + me.game[11] + me.game[12]}}</div>
+                            <div class="cell total">{{upper + bonus + lower}}</div>
+                        </div>
+                        <div class="line" ng-repeat="player in models.players | orderBy:'total':true"> 
+                            <div class="cell">Player {{player.id}}</div>
+                            <div class="cell" ng-repeat="index in [0,1,2,3,4,5]">{{player.game[index]}}</div>
+                            <div class="cell total">{{upper = player.game[0] + player.game[1] + player.game[2] + player.game[3] + player.game[4] + player.game[5]}}</div>
+                            <div class="cell total">{{(bonus = upper > 62 ? 35 : 0) ? bonus : null}}</div>
+                            <div class="cell" ng-repeat="index in [6,7,8,9,10,11,12]">{{player.game[index]}}</div>
+                            <div class="cell total">{{lower = player.game[6] + player.game[7] + player.game[8] + player.game[9] + player.game[10] + player.game[11] + player.game[12]}}</div>
+                            <div class="cell total">{{player.total = upper + bonus + lower}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+    {
+        "id": 0,
+        "game" : [ 3, 6, 9, 12, 15, 18, 25, 24, 25, null, null, null, 0 ]
+    },
+    {
+        "id": 1,
+        "game" : [ 3, 6, null, null, 10, 12, 25, 24, 25, null, null, null, 0 ]
+    },
+    {
+        "id": 2,
+        "game" : [ 0, 6, 9, null, 15, 18, 25, null, 25, null, null, 50, 0 ]
+    },
+    {
+        "id": 3,
+        "game" : [ 3, 0, 0, 12, 15, 18, 0, 24, 0, null, null, null, 22 ]
+    }
+]
